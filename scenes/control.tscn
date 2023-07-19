@@ -1,0 +1,172 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0fv8mp4e5br2"]
+
+[ext_resource type="Texture2D" uid="uid://dtim6vjen3pkn" path="res://raw/img/sun.png" id="1_hatg4"]
+[ext_resource type="Texture2D" uid="uid://basimvhe0elrv" path="res://raw/img/sunflower.png" id="2_kgo1r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_awafj"]
+line_spacing = 2.0
+font_size = 30
+font_color = Color(0.996094, 0.828125, 0.265625, 1)
+
+[sub_resource type="GDScript" id="GDScript_kdf3r"]
+script/source = "extends \"res://scripts/plant_chose.gd\"
+func _ready():
+	set_plant(preload(\"res://objects/shoter.tscn\"))
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_yv5jc"]
+font_size = 20
+
+[sub_resource type="GDScript" id="GDScript_dlsmw"]
+script/source = "extends \"res://scripts/plant_chose.gd\"
+func _ready():
+	set_plant(preload(\"res://objects/sunflower.tscn\"))
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(160, 100)
+layout_mode = 1
+offset_right = 799.0
+offset_bottom = 100.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="sun" type="Control" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(160, 100)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SunH" type="Control" parent="Panel/HBoxContainer/sun"]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sun" type="Sprite2D" parent="Panel/HBoxContainer/sun/SunH"]
+texture_filter = 1
+position = Vector2(40, 49)
+texture = ExtResource("1_hatg4")
+
+[node name="sunC" type="Control" parent="Panel/HBoxContainer/sun"]
+custom_minimum_size = Vector2(60, 100)
+layout_mode = 1
+anchor_left = 0.625
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/sun/sunC"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+label_settings = SubResource("LabelSettings_awafj")
+autowrap_mode = 1
+
+[node name="VSeparator" type="VSeparator" parent="Panel/HBoxContainer/sun/sunC"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 6.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Plants" type="HBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+mouse_filter = 0
+theme_override_constants/separation = 20
+
+[node name="shooter" type="Control" parent="Panel/HBoxContainer/Plants"]
+custom_minimum_size = Vector2(60, 100)
+layout_mode = 2
+script = SubResource("GDScript_kdf3r")
+
+[node name="ColorRect" type="ColorRect" parent="Panel/HBoxContainer/Plants/shooter"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.66
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Plants/shooter"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.67
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "100
+"
+label_settings = SubResource("LabelSettings_yv5jc")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="sunflwoer" type="Control" parent="Panel/HBoxContainer/Plants"]
+custom_minimum_size = Vector2(60, 100)
+layout_mode = 2
+script = SubResource("GDScript_dlsmw")
+
+[node name="ColorRect" type="ColorRect" parent="Panel/HBoxContainer/Plants/sunflwoer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.66
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Sunflower" type="Sprite2D" parent="Panel/HBoxContainer/Plants/sunflwoer/ColorRect"]
+position = Vector2(31.0001, 33)
+scale = Vector2(0.541139, 0.541139)
+texture = ExtResource("2_kgo1r")
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Plants/sunflwoer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.67
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "50
+"
+label_settings = SubResource("LabelSettings_yv5jc")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="Panel/HBoxContainer/Plants/shooter" to="Panel/HBoxContainer/Plants/shooter" method="mouse_entered"]
+[connection signal="mouse_exited" from="Panel/HBoxContainer/Plants/shooter" to="Panel/HBoxContainer/Plants/shooter" method="mouse_exited"]
+[connection signal="mouse_entered" from="Panel/HBoxContainer/Plants/sunflwoer" to="Panel/HBoxContainer/Plants/sunflwoer" method="mouse_entered"]
+[connection signal="mouse_exited" from="Panel/HBoxContainer/Plants/sunflwoer" to="Panel/HBoxContainer/Plants/sunflwoer" method="mouse_exited"]

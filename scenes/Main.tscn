@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://d34libp0x8qll"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_4fvbc"]
+[ext_resource type="PackedScene" uid="uid://bkjqtjjmbawud" path="res://objects/zombie.tscn" id="2_x81fm"]
+[ext_resource type="Texture2D" uid="uid://c1n7iuny0nbx1" path="res://raw/img/Map.png" id="3_6jbxk"]
+[ext_resource type="PackedScene" uid="uid://d0fv8mp4e5br2" path="res://scenes/control.tscn" id="4_grcb4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4fvbc")
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-140, -60)
+zoom = Vector2(0.8, 0.8)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-512, -256)
+
+[node name="Plants" type="Node2D" parent="."]
+
+[node name="Zombies" type="Node2D" parent="."]
+
+[node name="Zombie" parent="Zombies" instance=ExtResource("2_x81fm")]
+position = Vector2(520, -173)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = -880.0
+offset_top = -477.0
+offset_right = 894.0
+offset_bottom = 499.0
+color = Color(0.411765, 0.141176, 0.0705882, 1)
+
+[node name="Map" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture = ExtResource("3_6jbxk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("4_grcb4")]
+visible = false

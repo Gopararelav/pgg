@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://doq5sy5d86jmi"]
+
+[ext_resource type="Script" path="res://scripts/sunflower.gd" id="1_w1i00"]
+[ext_resource type="Texture2D" uid="uid://basimvhe0elrv" path="res://raw/img/sunflower.png" id="2_qcetj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vqdh"]
+size = Vector2(20, 50)
+
+[node name="Sunflower" type="Area2D" groups=["plants"]]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_w1i00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_6vqdh")
+
+[node name="Sunflower" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -36)
+texture = ExtResource("2_qcetj")

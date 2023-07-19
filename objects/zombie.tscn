@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkjqtjjmbawud"]
+
+[ext_resource type="Script" path="res://scripts/zombie.gd" id="1_ovw0l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjdm5"]
+size = Vector2(44, 81)
+
+[node name="Zombie" type="Area2D" groups=["zombies"]]
+script = ExtResource("1_ovw0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_rjdm5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -19.0
+offset_top = -47.0
+offset_right = 21.0
+offset_bottom = 21.0
+color = Color(0.0235294, 0.231373, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -18.0
+offset_top = 16.0
+offset_right = -3.0
+offset_bottom = 84.0
+color = Color(0.0235294, 0.231373, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 18.0
+offset_bottom = 88.0
+color = Color(0.0235294, 0.231373, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -35.0
+offset_top = -78.0
+offset_right = 5.0
+offset_bottom = -45.0
+color = Color(0.0235294, 0.231373, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
